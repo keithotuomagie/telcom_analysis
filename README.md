@@ -94,6 +94,12 @@ A straight line, which is associated with a linear regression model, is not appr
 
 I will start the modeling process by creating a baseline logistic regression model.  Afterwards, I will determine whether or not I can improve the classifier by tuning the model performance.
 
+**Baseline Logistic Regression Model Confusion Matrix**
+
+![Baseline Logistic Regression Model Confusion Matrix](images/image1.png)
+
+![Baseline Logistic Regression Model Receiver operating characteristic](images/image2.png)
+
 ### Baseline Logistic Regression Model | Conclusion
 
 I have concluded creating a baseline logistic regression model.  
@@ -121,6 +127,12 @@ However, the Area Under Curve (AUC) calculated for the test data baseline model 
 I want to tune the Baseline Logistic Regression Model in order to better predict whether or not a customer will churn.
 
 I will attempt this by inversely adjusting the weights of the target in accordance with the (target) frequencies.  I will call this model the "Balanced Logistic Regression Model". 
+
+**Balanced Logistic Regression Model Confusion Matrix**
+
+![Balanced Logistic Regression Model Confusion Matrix](images/image3.png)
+
+![Balanced Logistic Regression Model Receiver operating characteristic (ROC) Curve](images/image4.png)
 
 ### Tuning the Baseline Logistic Regression Model | Conclusion
 
@@ -174,6 +186,8 @@ I previously stated that I will proceed with utilizing the Baseline Logistic Reg
 
 I will attempt to tune the Baseline Logistic Regression Model by varying the regularization strength.
 
+![Receiver operating characteristic (ROC) Curve for different Regularization Strengths (Logistic Regression Model)](images/image5.png)
+
 ### Further Tuning the Baseline Logistic Regression Model  | Conclusion
 
 I attempted to further tune the Baseline Logistic Regression Model.  I utilized the following regularization strengths - 0.001, 0.01, 0.5, 2, 5, 10, 50, 100.
@@ -196,7 +210,15 @@ I will start the modeling process by creating a baseline decision tree classifie
 
 Afterwards, I will determine whether or not I can improve the classifier by tuning the model performance.
 
+![Baseline Decision Tree Model](images/image6.png)
+
 Upon my first glance at the Baseline Decision Tree Model, my intuition is to prune the decision tree at a later time.  I can see there are multiple layers of depth to the Baseline Decision Tree Model that I am constructing.
+
+**Baseline Decision Tree Model Confusion Matrix**
+
+![Baseline Decision Tree Model Confusion Matrix](images/image7.png)
+
+![Baseline Decision Tree Model Receiver operating characteristic (ROC) Curve](images/image8.png)
 
 ### Baseline Decision Tree Model | Conclusion
 
@@ -229,9 +251,13 @@ I am going to proceed to tune the decision tree classifier.
 
 ### Maximum Tree Depth
 
+![Maximum Tree Depth](images/image9.png)
+
 The optimal tree depth is 4.  After a tree depth of 4, the AUC scores for the train and test data begin to bifurcate.  
 
 ### Minimum Sample Split
+
+![Minimum Sample Split](images/image10.png)
 
 The optimal Minimum Sample Split is 0.1.  
 
@@ -241,6 +267,8 @@ In addition, at an approximate minimum sample split of 0.1, there is less than a
 
 ### Minimum Sample Leafs
 
+![Minimum Sample Leafs](images/image11.png)
+
 The optimal value for Minimum Sample Leafs is 0.1.
 
 The train AUC score and test AUC score is maximized at approximately 0.1.  At a Minimum Sample Leaf of approximately 0.1, the different between the train AUC score and test AUC score is less than 0.05.
@@ -248,6 +276,8 @@ The train AUC score and test AUC score is maximized at approximately 0.1.  At a 
 The train AUC score and test AUC score converge at a Minimum Sample Leaf of 0.5; however, the AUC scores for both train and test data are both 0.5.
 
 ### Maximum Features
+
+![Maximum Features](images/image12.png)
 
 Optimal maximum feature size is seen around 10.
 
@@ -268,7 +298,15 @@ For the new Decision Tree classifier, or Updated Decision Tree classifier, I wil
 - Confusion Matrix
 - ROC Curve
 
+![Updated Decision Tree Model](images/image13.png)
+
+![Updated Decision Tree Model Confusion Matrix](images/image14.png)
+
+![Updated Decision Tree Model Receiver operating characteristic (ROC) Curve](images/image15.png)
+
 I also want to understand which features are the most important in the Updated Decision Tree Classifier.  I will use the *feature importance* calculation from the sci-kit library.
+
+![Updated Decision Tree Model Feature Importance](images/image16.png)
 
 ### Tuning the Baseline Decision Tree Model  | Conclusion
 
