@@ -354,4 +354,74 @@ The Updated Decision Tree Model is better than the Baseline Decision Tree Model 
 
 ## Overall Conclusion and Recommendations
 
+**Baseline Logistic Regression Model**
+
+The Baseline Logistic Regression Model performed the best in comparison to the other Logistic Regression models I constructed.  Evaluation metrics are the following:
+
+*Training Data Evaluation Metrics*
+
+- Precision: 56.5%
+- Recall: 20.7%
+- Accuracy: 86.4%
+- F1 Score: 30.3%
+
+*Test Data Evaluation Metrics*
+
+- Precision: 56.1%
+- Recall: 18.4%
+- Accuracy: 85.6%
+- F1 Score: 27.7%
+
+**Updated Decision Tree Model**
+
+The Updated Decision Tree Model performed better in comparison to the Baseline Decision Tree Model.  Evaluation metrics are the following:
+
+*Training Data Evaluation Metrics*
+
+- Precision: 100.0%
+- Recall: 100.0%
+- Accuracy: 100.0%
+- F1 Score: 100.0%
+
+Test Data Evaluation Metrics*
+
+- Precision: 75.2%
+- Recall: 70.4%
+- Accuracy: 92.1%
+- F1 Score: 72.7%
+
+The Updated Decision Tree Model has overfitting due to the discrepancies between the following:
+
+1. Training Data Precision and Test Data Precision
+2. Training Data Recall and Test Data Recall
+3. Training Data F1 Score and Test Data F1 Score.
+
+However, the Updated Decision Tree Model has a higher accuracy than the Baseline Logistic Regression Model.  Furthermore, the Updated Decision Tree Model provides insight regarding which customer characteristics are important for predicting customer churn.
+
+I will proceed with presenting the Updated Decision Tree Model to the client, SyriaTel.
+
 ## Next Steps
+
+Next steps are the following:
+
+**1. Present Updated Decision Tree Model and Model Metrics**
+
+I will present the Updated Decision Tree Model along with the Evaluation Metrics - Precision, Recall, Accuracy, and F1 score - to the client, SyriaTel to provide a progress update.  More important, I want to acquire a deeper understanding of client requirements.
+
+**2. Further Understand Most Important Model Features**
+
+I understand which features are important in regards to predicting customer churn.  However, I will need to acquire a better understanding of how the features are related to customer churn.
+
+For example, *customer service calls* is the second most important feature within the Updated Decision Tree Model.  However, I have to ask myself the following question: Is customer churn associated with an increase in customer service calls.  My intuition would make the assumption that an increase in customer service calls is associated with customer churn.  The customer may be frustrated with the telecom service.  Or the customer may not be aware of SyriaTel's whole suite of telephone services.
+
+However, I will need to analyze my aforementioned intuition.
+
+**3. Incorporate Feedback and New Information into Decision Tree Model**
+
+Based on the feedback and insight from Steps 1 and 2, I will tune the Updated Decision Tree Model even further.
+
+# References
+
+![Jupyter notebook](notebook.ipynb)
+![images](images)
+
