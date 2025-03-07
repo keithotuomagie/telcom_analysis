@@ -28,9 +28,13 @@ Based on the following code - *df['state'].nunique()* - there are a total of 51 
 
 However, upon reviewing the output of the following code - *df['state'].value_counts()* - I see that the District of Columbia is being counted as a state.  There are 54 observations for the District of Columbia.
 
+![Breakdown of Churn](images/image_churn.png)
+
 ## Observations | Number of Values within the *Churn* Column
 
-Based on the following code - *df['churn'].value_counts()* - there are are more *True* observations than *False*.  If I proceed with using a train-test split later, an idea is to use SMOTE in order to create more *True* observations within the Training data.
+Based on the following code - *df['churn'].value_counts()* - there are are more *True* observations than *False*.  There are 2,850 observations that are *False*, or 2,850 customers that did not Churn.  There are 483 observations that are *True*, or 483 customers that did churn.  There is an imbalance within the data set.    
+
+If I proceed with using a train-test split later, an idea is to use SMOTE in order to create more *True* observations within the Training data.
 
 ## Observations | Missing Values
 
@@ -118,13 +122,21 @@ When the baseline model utilizes the test data, the evaluation metrics are the f
 - Accuracy: 85.6%
 - F1 Score: 27.7%
 
-This is a strong start to understanding and identifying any trends with customer churn.  The evaluation metrics associated with the test data is close to the evaluation metrics associated with the training data.
+This is a strong start to understanding and identifying any trends with customer churn.  The evaluation metrics associated with the test data is close to the evaluation metrics associated with the training data.  This signifies a lack of overfitting and underfitting.
 
-However, the Area Under Curve (AUC) calculated for the test data baseline model is approximately 82.7%.  This is due to the number of false positives, or 102, calculated.  Improvement in any future logistic regression model could be associated with decreasing the number of false positives predicted, or increasing the number of true positives predicted. 
+The Area Under the Curve (AUC) calculated for the test data baseline logistic regression model is approximately 82.7%.
+
+I want to highlight that the recall evaluation metric for the test data is 18.4%.  This is the crucial evaluation metric for the business problem.  As a note, recall is calculated by dividing the *Number of True Positives* by *Number of Actual Positives*.
+
+A false positive is associated with a customer that was identified as a client that churned.  However, the customer did not churn.  In other words, SyriaTelcom did not lose the actual business.
+
+A false negative is associated with a customer that was identified as a client that did not churn, but actually discontinued the service.  This is a loss of revenue for SyriaTelcom.  
+
+As a result, any model created needs to minimize the amount of false negatives.  Recall is the appropriate model evaluation metric that accentuates the identification of false negatives. 
 
 ## Tuning the Baseline Logistic Regression Model
 
-I want to tune the Baseline Logistic Regression Model in order to better predict whether or not a customer will churn.
+I want to tune the Baseline Logistic Regression Model in order to better predict whether or not a customer will churn.  More importantly, I want to minimize the amount of false negatives identified.
 
 I will attempt this by inversely adjusting the weights of the target in accordance with the (target) frequencies.  I will call this model the "Balanced Logistic Regression Model". 
 
@@ -172,31 +184,65 @@ When the balanced model utilizes the test data, the evaluation metrics are the f
 
 **Other Observations**
 
-I also want to highlight that the Area Under the Curve (AUC) for both models - the Baseline Logistic Regression Model, and the Balanced Logistic Regression Model - approximately the same.  The Baseline Logistic Regression Model has an AUC of 82.7%  The Balanced Logistic Regression Model has an AUC of 82.9%.
+Regarding the Balanced Logistic Regression Model, the evaluation metrics associated with the test data is close to the evaluation metrics associated with the training data.  This signifies a lack of overfitting and underfitting.
 
-The Baseline Logistic Regression Model had more False Negatives - or 102 observations - in comparison to the Balanced Logistic Regression Model - or 28 observations.
+Recall is the appropriate model evaluation metric that accentuates the identification of false negatives.  Any model created needs to minimize the amount of false negatives.  The Balanced Logistic Regression Model recall metric (for the test data) is 77.6%.  The Baseline Logistic Regression Model recall metric (for the test data) is 18.4%.  (As a reminder, I inversely adjusting the weights of the target in accordance with the (target) frequencies via Balanced Logistic Regression Model.)
 
-The Baseline Logistic Regression Model has less False Positives - or 18 observations - in comparison to the Balanced Logistic Regression Model - or 162 observations.
+The Balanced Logistic Regression Model is more appropriate for the SyriaTelcom business case.
 
-I will proceed with utilizing the Baseline Logistic Regression Model since its Test Data Accuracy Score is higher than the Test Data Accuracy Score of the Balanced Logistic Regression Model.
+## Tuning the Balanced Logistic Regression Model
 
-## Further Tuning the Baseline Logistic Regression Model
+I previously stated that I will proceed with utilizing the Balanced Logistic Regression Model.  I want to determine whether or not I can tune this model.
 
-I previously stated that I will proceed with utilizing the Baseline Logistic Regression Model.  I want to determine whether or not I can still tune this model.
-
-I will attempt to tune the Baseline Logistic Regression Model by varying the regularization strength.
+I will attempt to tune the Balanced Logistic Regression Model by varying the regularization strength.
 
 ![Receiver operating characteristic (ROC) Curve for different Regularization Strengths (Logistic Regression Model)](images/image5.png)
 
-### Further Tuning the Baseline Logistic Regression Model  | Conclusion
+The tuned Balanced Logistic Regression Model with the highest Recall Evaluation metrics is the one that has a regularization strength of 0.001.  The calculated Recall is 0.792.  I will call this model the Tuned Balanced Logistic Regression Model.  I will proceed by creating a Confusion Matrix and calculating the other Evaluation metrics.
 
-I attempted to further tune the Baseline Logistic Regression Model.  I utilized the following regularization strengths - 0.001, 0.01, 0.5, 2, 5, 10, 50, 100.
+![Tuned Balanced Logistic Regression Model Confusion Matrix](images/TunedBalancedConfusion.png)
 
-The Area Under the Curves (AUCs) for the aforementioned regularization strengths were approximately 82.7%  The AUC for the Baseline Logistic Regression Model is approximately 82.7%
+### Tuning the Balanced Logistic Regression Model  | Conclusion
 
-Based on the AUCs, there is no benefit to utilize any of the Logistic Regression Models with varying regularization strengths.
+I attempted to tune the Balanced Logistic Regression Model with the following regularization strengths -  0.001, 0.01, 0.5, 2, 5, 10, 50, 100.  
 
-I will continue to proceed utilizing the Baseline Logistic Regression Model.
+The recall evaluation metric improved the most when the regularization strength was updated to 0.0001.  I named this model the Tuned Balanced Logistic Regression Model. 
+
+The Evaluation Metrics for the Balanced Logistic Regression Model and Tuned Balanced Logistic Regression Model are below.
+
+**Balanced Logistic Regression Model**
+
+When the balanced model utilizes the training data, the evaluation metrics are the following:
+
+- Precision: 35.2% 
+- Recall: 73.7%
+- Accuracy: 76.8%
+- F1 Score: 47.6%
+
+When the balanced model utilizes the test data, the evaluation metrics are the following:
+
+- Precision: 37.5%
+- Recall: 77.6%
+- Accuracy: 77.2%
+- F1 Score: 50.5%
+
+**Tuned Balanced Logistic Regression Model**
+
+When the tuned balanced model utilizes the training data, the evaluation metrics are the following:
+
+- Precision: 34.4% 
+- Recall: 73.2%
+- Accuracy: 76.2%
+- F1 Score: 46.8%
+
+When the balanced model utilizes the test data, the evaluation metrics are the following:
+
+- Precision: 37.4%
+- Recall: 79.2%
+- Accuracy: 77.0%
+- F1 Score: 50.8%
+
+Recall is the appropriate model evaluation metric that accentuates the identification of false negatives.  Any model created needs to minimize the amount of false negatives.  In this regards, the Tuned Balanced Logistic Regression Model performs better than the Balanced Logistic Regression Model.
 
 ## Decision Tree
 
