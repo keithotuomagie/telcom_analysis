@@ -331,11 +331,11 @@ The train AUC score constantly remains at 1.00.  However, the test AUC score - w
 
 ### Applying Updated Hyperparameter Values to Baseline Decision Tree Model
 
-After I applied all of the optimal values to the Decision Tree Classifier, the calculated Area Under the Curve (AUC) - 0.5 - is worse than the Baseline Decision Tree Classifier (AUC), which is approximately 82.2%.
+After I applied all of the optimal values to the Decision Tree Classifier, the calculated Area Under the Curve (AUC) - 0.5 - is worse than the Baseline Decision Tree Classifier (AUC), which is approximately 82.0%.  In addition, the calculated recall score is 0.
 
 I will proceed with tuning the Baseline Decision Tree classifier by applying a maximum feature size of 10.
 
-The AUC for the new Decision Tree classifier is approximately 83.9%.  This is slightly better than the Baseline Decision Tree Classifier.
+The AUC for the new Decision Tree classifier is approximately 83.9%.  This is slightly better than the Baseline Decision Tree Classifier.  More importantly, the recall evaluation metric for the new Decision Tree classifier, 72.8%, is better than the recall evaluation metric for the Baseline Decision Tree classifer, 68.8%
 
 For the new Decision Tree classifier, or Updated Decision Tree classifier, I will create and calculate the following:
 
