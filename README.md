@@ -402,6 +402,11 @@ In summary, the tuned Balance Logistic Regression Model performs the best in reg
 
 I want to undertand which (customer) features are the most important in regards to customer churn.  An avenue to ascertain which features are the most important is calculating the coefficients for each feature.
 
+![Feature Importance (by Coefficients)](images/
+![Updated Decision Tree Model Feature Importance](images/feature_vs_coefficients.png)
+
+I will proceed by analyzing the top three features - 1) International Plan_yes, 2) Customer Service Calls, 3) Total Day Charge - against Customer Churn.
+
 # Overall Conclusion and Recommendations
 
 ## Overall Conclusion and Recommendations
