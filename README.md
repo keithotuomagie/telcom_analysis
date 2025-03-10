@@ -390,11 +390,17 @@ When the baseline model utilizes the test data, the evaluation metrics are the f
 - Accuracy: 91.7%
 - F1 Score: 72.5%
 
-Both decision tree models have overfitting.  However, the Updated Decision Tree Model's (test data) recall score is slightly better than the Baseline Decision Tree Model's (test data) recall score.  The Baseline Decision Tree Model's (test data) precision score is slightly better than the Updated Decision Tree Model's (test data) precision score.  Regarding the Accuracy and F1 scores, the aforementioned (test data) metrics are approximately the same for both models.
+Both decision tree models have overfitting.  However, the Updated Decision Tree Model's (test data) recall score is slightly better than the Baseline Decision Tree Model's (test data) recall score.
 
 Furthermore, the Updated Decision Tree Model AUC score is slightly better than the Baseline Decision Tree Model AUC score.  The Updated Decision Tree Model AUC score is approximately 83.9%.  The Baseline Decision Tree Model AUC score is approximately 82.2%.  
 
-I will proceed to use the The Updated Decision Tree Model since its AUC score is slightly better than the Baseline Decision Tree Model AUC score.
+However, the tuned Balance Logistic Regression Model outperforms the Updated Decision Tree Model in regards to the recall evaluation metric.  The recall score for the tuned Balanced Logsitic Regression Model is 79.2%.  The recall score for the Updated Decision Tree model is 72.8%.
+
+In summary, the tuned Balance Logistic Regression Model performs the best in regards to recall score.  As a next step, I will understand which (customer) features are the most important in regards to customer churn.
+
+## Feature Importance of the Tuned Balance Logistic Regression Model
+
+I want to undertand which (customer) features are the most important in regards to customer churn.  An avenue to ascertain which features are the most important is calculating the coefficients for each feature.
 
 # Overall Conclusion and Recommendations
 
