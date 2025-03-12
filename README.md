@@ -406,6 +406,35 @@ I want to undertand which (customer) features are the most important in regards 
 
 I will proceed by analyzing the top three features - 1) International Plan_yes, 2) Customer Service Calls, 3) Total Day Charge - against Customer Churn.
 
+### International Plan vs. Customer Churn
+
+![International Plan against Customer Churn](images/intlplan_churn.png)
+
+The output of the following bar plot - *International Plan* against *Customer Churn* - is not what I expected.  For customers that do not have an International Plan, only 11% of those customer churn.  For customers that do have an International Plan, 42% of those customers churn.
+
+I was expecting customers that have an International Plan to churn less in comparison to customers that do not have an International Plan.
+
+### Customer Service Calls vs. Customer Churn
+
+![Customers Service Calls against Customer Churn](images/cstrsrvccalls_churn.png)
+
+Customer churn dramatically increases after three customer service calls.  Only 10% of customers churn when they make three customer service calls.  When a customer makes four customer service calls, 46% of those customers churn.
+
+### Total Day Charge vs. Customer Churn
+
+Before creating a bar plot of *Total Day Charge* against *Customer Churn*, I want to create bins, or segments, for the *Total Day Charge* data.  The segmentations will be the following:
+
+- 0 to 9.99
+- 10 to 19.99
+- 20 to 29.99
+- 30 to 39.99
+- 40 to 49.99
+- 50 to 60
+
+![Total Day Charge against Customer Churn](images/ttldaychrge_churn.png)
+
+Customer Churn dramatically increases once the total day charge becomes 40 dollars.  When a customer spends between 30 dollars to 39.99 dollars, 8% of customers churn.  When a customer spends between 40 dollars to 49.99 dollars, 34% of those customers churn.
+
 # Overall Conclusion and Recommendations
 
 ## Overall Conclusion and Recommendations
