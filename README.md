@@ -130,7 +130,7 @@ I want to highlight that the recall evaluation metric for the test data is 18.4%
 
 A false positive is associated with a customer that was identified as a client that churned.  However, the customer did not churn.  In other words, SyriaTelcom did not lose the actual business.
 
-A false negative is associated with a customer that was identified as a client that did not churn, but actually discontinued the service.  This is a loss of revenue for SyriaTelcom.  
+A false negative is associated with a customer that was identified as not churning, but the client discontinued the service in reality.   This is a loss of revenue for SyriaTelcom.  
 
 As a result, any model created needs to minimize the amount of false negatives.  Recall is the appropriate model evaluation metric that accentuates the identification of false negatives. 
 
@@ -439,71 +439,40 @@ Customer Churn dramatically increases once the total day charge becomes 40 dolla
 
 ## Overall Conclusion and Recommendations
 
-**Baseline Logistic Regression Model**
+Recall is the most appropriate model evaluation metric that accentuates the identification of false negatives.  A false negative is associated with a customer that was identified as not churning, but the client discontinued the service in reality.  This is a loss of revenue for SyriaTelcom.  As a result, the Tuned Balanced Logistic Regression Model is the best model for this business case.
 
-The Baseline Logistic Regression Model performed the best in comparison to the other Logistic Regression models I constructed.  Evaluation metrics are the following:
+Recall scores for all of the models are the following:
 
-*Training Data Evaluation Metrics*
+- Baseline Logistic Regression Model (Recall Score: 18.4%)
+- Balanced Logistic Regression Model (Recall Score: 77.6%)
+- Tuned Balanced Logistic Regression Model (Recall Score: 79.2%)
+- Baseline Decision Tree Model (Recall Score: 68.8%)
+- Updated Decision Tree Model (Recall Score: 72.8%)
 
-- Precision: 56.5%
-- Recall: 20.7%
-- Accuracy: 86.4%
-- F1 Score: 30.3%
-
-*Test Data Evaluation Metrics*
-
-- Precision: 56.1%
-- Recall: 18.4%
-- Accuracy: 85.6%
-- F1 Score: 27.7%
-
-**Updated Decision Tree Model**
-
-The Updated Decision Tree Model performed better in comparison to the Baseline Decision Tree Model.  Evaluation metrics are the following:
-
-*Training Data Evaluation Metrics*
-
-- Precision: 100.0%
-- Recall: 100.0%
-- Accuracy: 100.0%
-- F1 Score: 100.0%
-
-Test Data Evaluation Metrics*
-
-- Precision: 72.2%
-- Recall: 72.8%
-- Accuracy: 91.7%
-- F1 Score: 72.5%
-
-The Updated Decision Tree Model has overfitting due to the discrepancies between the following:
-
-1. Training Data Precision and Test Data Precision
-2. Training Data Recall and Test Data Recall
-3. Training Data F1 Score and Test Data F1 Score.
-
-However, the Updated Decision Tree Model has a higher accuracy than the Baseline Logistic Regression Model.  Furthermore, the Updated Decision Tree Model provides insight regarding which customer characteristics are important for predicting customer churn.
-
-I will proceed with presenting the Updated Decision Tree Model to the client, SyriaTel.
+There are limitations with the Tuned Balanced Logistic Regression Model.  It was constructed based on 3,333 customers. Additional data needs to be collected in order to train and test the aformentioned model.
 
 ## Next Steps
 
 Next steps are the following:
 
-**1. Present Updated Decision Tree Model and Model Metrics**
+**1. Competitor Analysis**
 
-I will present the Updated Decision Tree Model along with the Evaluation Metrics - Precision, Recall, Accuracy, and F1 score - to the client, SyriaTel to provide a progress update.  More important, I want to acquire a deeper understanding of client requirements.
+42% of customers that have an International Plan churn.  
 
-**2. Further Understand Most Important Model Features**
+When a customer spends between 40 dollars to 49.99 dollars on Total Day Charges, 34% of those customers churn.  In contrast, 8% of customers that spend between 30 to 39.99 dollars on Total Day Charges churn.
 
-I understand which features are important in regards to predicting customer churn.  However, I will need to acquire a better understanding of how the features are related to customer churn.
+My recommendation is to conduct a competitor pricing analysis and focus on the costs of International Plans and Total Day Charges.
 
-For example, *customer service calls* is the second most important feature within the Updated Decision Tree Model.  However, I have to ask myself the following question: Is customer churn associated with an increase in customer service calls.  My intuition would make the assumption that an increase in customer service calls is associated with customer churn.  The customer may be frustrated with the telecom service.  Or the customer may not be aware of SyriaTel's whole suite of telephone services.
+**2. Customer Phone Intervention**
 
-However, I will need to analyze my aforementioned intuition.
+Customer churn dramatically increases after three customer service calls.  Only 10% of customers churn when they make three customer service calls.  When a customer makes four customer service calls, 46% of those customers churn.
 
-**3. Incorporate Feedback and New Information into Decision Tree Model**
+My recommendation is to to implement a phone intervention in which SyriaTelcom customer service performs an outreach to customers after they have made three customer service calls.
 
-Based on the feedback and insight from Steps 1 and 2, I will tune the Updated Decision Tree Model even further.
+
+**3. Product Development**
+
+The aforementioned customer phone intervention is an opportunity to collect customer feedback.  Customer feedback can be aggregated, and then analyzed for new products and/or product enhancements.
 
 # References
 
