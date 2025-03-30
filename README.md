@@ -279,10 +279,10 @@ When the baseline model utilizes the training data, the evaluation metrics are t
 
 When the baseline model utilizes the test data, the evaluation metrics are the following:
 
-- Precision: 76.1%
-- Recall: 68.8%
-- Accuracy: 92.1%
-- F1 Score: 72.3%
+- Precision: 73.7%
+- Recall: 69.6%
+- Accuracy: 91.7%
+- F1 Score: 71.6%
 
 This model has overfitting due to the discrepancies in the training and test precision metrics, and the training and test recall metrics.
 
@@ -331,11 +331,11 @@ The train AUC score constantly remains at 1.00.  However, the test AUC score - w
 
 ### Applying Updated Hyperparameter Values to Baseline Decision Tree Model
 
-After I applied all of the optimal values to the Decision Tree Classifier, the calculated Area Under the Curve (AUC) - 0.5 - is worse than the Baseline Decision Tree Classifier (AUC), which is approximately 82.0%.  In addition, the calculated recall score is 0.
+After I applied all of the optimal values to the Decision Tree Classifier, the calculated Area Under the Curve (AUC) - 0.5 - is worse than the Baseline Decision Tree Classifier (AUC), which is approximately 81.5%.  In addition, the calculated recall score is 0.
 
 I will proceed with tuning the Baseline Decision Tree classifier by applying a maximum feature size of 10.
 
-The AUC for the new Decision Tree classifier is approximately 83.9%.  This is slightly better than the Baseline Decision Tree Classifier.  More importantly, the recall evaluation metric for the new Decision Tree classifier, 72.8%, is better than the recall evaluation metric for the Baseline Decision Tree classifer, 68.8%
+The AUC for the new Decision Tree classifier is approximately 85.3%.  This is slightly better than the Baseline Decision Tree Classifier.  More importantly, the recall evaluation metric for the new Decision Tree classifier, 76.0%, is better than the recall evaluation metric for the Baseline Decision Tree classifer, 69.6%
 
 For the new Decision Tree classifier, or Updated Decision Tree classifier, I will create and calculate the following:
 
@@ -369,10 +369,10 @@ When the baseline model utilizes the training data, the evaluation metrics are t
 
 When the baseline model utilizes the test data, the evaluation metrics are the following:
 
-- Precision: 76.1%
-- Recall: 68.8%
-- Accuracy: 92.1%
-- F1 Score: 72.3%
+- Precision: 73.7%
+- Recall: 69.6%
+- Accuracy: 91.7%
+- F1 Score: 71.6%
 
 **Updated Decision Tree Model**
 
@@ -385,16 +385,16 @@ When the baseline model utilizes the training data, the evaluation metrics are t
 
 When the baseline model utilizes the test data, the evaluation metrics are the following:
 
-- Precision: 72.2%
-- Recall: 72.8%
-- Accuracy: 91.7%
-- F1 Score: 72.5%
+- Precision: 71.4%
+- Recall: 76.0%
+- Accuracy: 91.8%
+- F1 Score: 73.6%
 
 Both decision tree models have overfitting.  However, the Updated Decision Tree Model's (test data) recall score is slightly better than the Baseline Decision Tree Model's (test data) recall score.
 
-Furthermore, the Updated Decision Tree Model AUC score is slightly better than the Baseline Decision Tree Model AUC score.  The Updated Decision Tree Model AUC score is approximately 83.9%.  The Baseline Decision Tree Model AUC score is approximately 82.2%.  
+Furthermore, the Updated Decision Tree Model AUC score is slightly better than the Baseline Decision Tree Model AUC score.  The Updated Decision Tree Model AUC score is approximately 85.3%.  The Baseline Decision Tree Model AUC score is approximately 81.5%.  
 
-However, the tuned Balance Logistic Regression Model outperforms the Updated Decision Tree Model in regards to the recall evaluation metric.  The recall score for the tuned Balanced Logsitic Regression Model is 79.2%.  The recall score for the Updated Decision Tree model is 72.8%.
+However, the tuned Balance Logistic Regression Model outperforms the Updated Decision Tree Model in regards to the recall evaluation metric.  The recall score for the tuned Balanced Logsitic Regression Model is 79.2%.  The recall score for the Updated Decision Tree model is 76.0%.
 
 In summary, the tuned Balance Logistic Regression Model performs the best in regards to recall score.  As a next step, I will understand which (customer) features are the most important in regards to customer churn.
 
@@ -446,8 +446,8 @@ Recall scores for all of the models are the following:
 - Baseline Logistic Regression Model (Recall Score: 18.4%)
 - Balanced Logistic Regression Model (Recall Score: 77.6%)
 - Tuned Balanced Logistic Regression Model (Recall Score: 79.2%)
-- Baseline Decision Tree Model (Recall Score: 68.8%)
-- Updated Decision Tree Model (Recall Score: 72.8%)
+- Baseline Decision Tree Model (Recall Score: 69.6%)
+- Updated Decision Tree Model (Recall Score: 76.0%)
 
 There are limitations with the Tuned Balanced Logistic Regression Model.  It was constructed based on 3,333 customers. Additional data needs to be collected in order to train and test the aformentioned model.
 
